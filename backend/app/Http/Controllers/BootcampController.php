@@ -34,30 +34,18 @@ class BootcampController extends Controller
      */
     public function store(StoreBootcampRequest $request)
     {
-        //Aquí se inserta un bootcamp
-        //echo "Aquí se inserta un bootcamp";
-        //Verificar que llegó aquí el payload
-        //return $request->all();
+             //Crear el curso 
 
-        //Registrar el Bootcamp a partir del payload
-        $newBootcamp = Bootcamp::create(
-            $request->all()
-        );
-        /*$newBootcamp->name = $request->input("name");
-        $newBootcamp->description = $request->input("description") ;
-        $newBootcamp->website = $request->input("website");
-        $newBootcamp->phone = $request->input("phone");       
-        $newBootcamp->user_id = $request->input("user_id");
-        $newBootcamp->save();*/
-            
-        
-        //return $newBootcamp;
-        return response(
-            [
-                "success" => true,
-                "data" => $newBootcamp
-            ],201
-        );
+            $curso = new Course();
+            $curso->bootcamp_id = $id;
+            $curso->save();
+
+            //Enviar response
+            return response()->json([
+             "success" => true,
+             "data" => $curso
+         ], 201);
+
     }
 
     /**

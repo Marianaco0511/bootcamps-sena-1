@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BootcampController;
+use App\Http\Controllers\CoursesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,8 @@ use App\Http\Controllers\BootcampController;
 });*/
 
 Route::apiResource('bootcamps', BootcampController::class);
+Route::apiResource('courses' , CoursesController::class);
+//Ruta especifica para crearle un curso a un bootcamp
+Route::post("courses/{idbootcamp}/create" , 
+            [CoursesController::class , "store"]
+);
